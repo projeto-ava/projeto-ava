@@ -2,6 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-ExtraLight.ttf');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-ExtraBold.ttf');
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
