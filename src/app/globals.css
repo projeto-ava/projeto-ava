@@ -54,15 +54,15 @@
 @layer base {
   :root {
     --gray-ctr-1: #FCFCFD;
-    --gray-ctr-2: #98A2B3;
-    --gray-ctr-3: #344054;
-    --gray-ctr-4: #101828;
+    --gray-ctr-2: #F2F4F7;
+    --gray-ctr-3: #98A2B3;
+    --gray-ctr-4: #344054;
   }
 
   [data-theme="dark"] {
-    --gray-ctr-1: #101828;
+    --gray-ctr-1: #1D2939;
     --gray-ctr-2: #344054;
-    --gray-ctr-3: #98A2B3;
+    --gray-ctr-3: #667085;
     --gray-ctr-4: #FCFCFD;
   }
 }
