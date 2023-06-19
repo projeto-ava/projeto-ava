@@ -51,26 +51,18 @@
   src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-ExtraBold.ttf');
 }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --gray-ctr-1: #FCFCFD;
+    --gray-ctr-2: #98A2B3;
+    --gray-ctr-3: #344054;
+    --gray-ctr-4: #101828;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  [data-theme="dark"] {
+    --gray-ctr-1: #101828;
+    --gray-ctr-2: #344054;
+    --gray-ctr-3: #98A2B3;
+    --gray-ctr-4: #FCFCFD;
+  }
 }
