@@ -14,7 +14,7 @@ export const Button = ({ disabled, children, onClick, fullWidth }: IButtonProp) 
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`px-4 py-2.5 text-white rounded focus:outline outline-primary/20 outline-4 bg-blue-500 hover:bg-primary-dark disabled:text-gray-500 disabled:bg-gray-500/20 ${fullWidth ? 'w-full' : ''}`}
+      className={`px-4 py-2.5 text-white rounded focus:outline outline-primary/20 outline-4 bg-primary hover:bg-primary-dark disabled:text-gray-500 disabled:bg-gray-500/20 ${fullWidth ? 'w-full' : ''}`}
     >
       {children}
     </button>
