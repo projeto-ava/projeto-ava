@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ReadCvLogo, EnvelopeSimple, Question, LockSimple, EyeSlash } from "@phosphor-icons/react";
 import { Button } from "@/components/Button/Button";
 import { InputText } from "@/components/InputText/InputText";
+import { CheckboxComponent } from "@/components/Checkbox/Checkbox";
 
 
 export default function Home() {
@@ -48,6 +49,7 @@ export default function Home() {
           />
           <div className="flex justify-between">
             <div className="flex gap-2 items-center">
+              <CheckboxComponent/>
               <label className="text-sm font-normal text-gray-ctr-4">Lembrar senha</label> {/*Label seria a tag correta aqui? */}
             </div>
             <a href="#" className="text-sm font-bold text-primary">Esqueceu a senha?</a>
