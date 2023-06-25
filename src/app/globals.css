@@ -3,66 +3,161 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 200;
-  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-ExtraLight.ttf');
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 200;
+    src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-ExtraLight.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 300;
-  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Light.ttf');
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Light.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Regular.ttf');
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Regular.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 500;
-  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Medium.ttf');
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Medium.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 600;
-  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-SemiBold.ttf');
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-SemiBold.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Bold.ttf');
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-Bold.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 800;
-  src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-ExtraBold.ttf');
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../assets/fonts/Nunito\ Sans/NunitoSans_10pt-ExtraBold.ttf');
 }
 
 @layer base {
-  :root {
-    --gray-ctr-1: #FCFCFD;
-    --gray-ctr-2: #F2F4F7;
-    --gray-ctr-3: #98A2B3;
-    --gray-ctr-4: #344054;
-  }
+    :root {
+        /*******************/
+        /*** Base colors ***/
+        /*******************/
 
-  [data-theme="dark"] {
-    --gray-ctr-1: #1D2939;
-    --gray-ctr-2: #344054;
-    --gray-ctr-3: #667085;
-    --gray-ctr-4: #FCFCFD;
-  }
+        /* Gray */
+        --gray-25: 252 252 253;
+        --gray-50: 249 250 251;
+        --gray-100: 242 244 247;
+        --gray-200: 234 236 240;
+        --gray-300: 208 213 221;
+        --gray-400: 152 162 179;
+        --gray-500: 102 112 133;
+        --gray-600: 71 84 103;
+        --gray-700: 52 64 84;
+        --gray-800: 29 41 57;
+        --gray-900: 16 24 40;
+
+        /* Blue */
+        --blue-25: 245 248 255;
+        --blue-50: 238 244 255;
+        --blue-100: 224 234 255;
+        --blue-200: 199 215 254;
+        --blue-300: 164 188 253;
+        --blue-400: 128 152 249;
+        --blue-500: 97 114 243;
+        --blue-600: 68 76 231;
+        --blue-700: 53 56 205;
+        --blue-800: 45 49 166;
+        --blue-900: 45 50 130;
+
+        /* Red */
+        --red-25: 255 251 250;
+        --red-50: 254 243 242;
+        --red-100: 254 228 226;
+        --red-200: 254 205 202;
+        --red-300: 253 162 155;
+        --red-400: 249 112 102;
+        --red-500: 240 68 56;
+        --red-600: 217 45 32;
+        --red-700: 180 35 24;
+        --red-800: 145 32 24;
+        --red-900: 122 39 26;
+
+        /* Yellow */
+        --yellow-25: 255 252 245;
+        --yellow-50: 255 250 235;
+        --yellow-100: 254 240 199;
+        --yellow-200: 254 223 137;
+        --yellow-300: 254 200 75;
+        --yellow-400: 253 176 34;
+        --yellow-500: 247 144 9;
+        --yellow-600: 220 104 3;
+        --yellow-700: 181 71 8;
+        --yellow-800: 147 55 13;
+        --yellow-900: 122 46 14;
+
+        /* Green */
+        --green-25: 246 254 249;
+        --green-50: 236 253 243;
+        --green-100: 209 250 223;
+        --green-200: 166 244 197;
+        --green-300: 108 233 166;
+        --green-400: 50 213 131;
+        --green-500: 18 183 106;
+        --green-600: 3 152 85;
+        --green-700: 2 122 72;
+        --green-800: 5 96 58;
+        --green-900: 5 79 49;
+
+        /****************/
+        /*** Contrast ***/
+        /****************/
+
+        /* Gray */
+        --gray-ctr-1: var(--gray-25);
+        --gray-ctr-2: var(--gray-100);
+        --gray-ctr-3: var(--gray-400);
+        --gray-ctr-4: var(--gray-700);
+
+        /*******************/
+        /*** Text colors ***/
+        /*******************/
+
+        /* Gray */
+        --grey-txt-1: var(--gray-800);
+        --grey-txt-2: var(--gray-500);
+        --grey-txt-3: var(--gray-400);
+
+        /***************/
+        /*** Commons ***/
+        /***************/
+        --white: white;
+        --black: var(--gray-900);
+    }
+
+    [data-theme='dark'] {
+        --gray-ctr-1: var(--gray-800);
+        --gray-ctr-2: var(--gray-700);
+        --gray-ctr-3: var(--gray-500);
+        --gray-ctr-4: var(--gray-25);
+
+        --grey-txt-1: var(--gray-25);
+        --grey-txt-2: var(--gray-300);
+        --grey-txt-3: var(--gray-400);
+
+        --white: var(--gray-25);
+    }
 }
