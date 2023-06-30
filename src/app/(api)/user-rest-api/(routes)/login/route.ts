@@ -1,4 +1,4 @@
-import type { NextApiResponse } from 'next';
+import { NextRequest } from 'next/server';
 
 import { IUser, IUserLoginRes } from '../../models/user';
 import dbConnection from '../../../services/db-connection';
@@ -6,7 +6,7 @@ import { UserController, UserValidationError } from '../../controllers/user';
 
 dbConnection();
 
-export async function POST(req: Request, res: NextApiResponse<IUserLoginRes>) {
+export async function POST(req: NextRequest) {
     try {
         const { email, password } = await req.json();
         if (!email || !password) throw new UserValidationError('Invalid data');

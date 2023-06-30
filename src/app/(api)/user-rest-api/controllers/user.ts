@@ -1,14 +1,15 @@
 import mongoose from 'mongoose';
 import { CustomError } from '../models/errors';
-import { IUser, IUserCreateReq, IUserInfo, IUserLoginReq, IUserLoginRes, User } from '../models/user';
-import { hashPassword, comparePassword, generateToken } from '../utils/auth';
+import { IUser, IUserCreateReq, IUserDetail, IUserDetailReq, IUserLoginReq, IUserLoginRes, User } from '../models/user';
+import { hashPassword, comparePassword, generateToken, verifyToken } from '../utils/auth';
 
 /**************
  * Interfaces *
  **************/
 interface IUserController {
-    create: ({ name, email, password }: IUserCreateReq) => Promise<IUserInfo>;
+    create: ({ name, email, password }: IUserCreateReq) => Promise<IUserDetail>;
     login: ({ email, password }: IUserLoginReq) => Promise<IUserLoginRes>;
+    getUser: ({ accessToken, userId }: IUserDetailReq) => Promise<IUserDetail>;
 }
 
 /*****************
@@ -21,8 +22,8 @@ export class UserValidationError extends CustomError {
 }
 
 class UserAuthenticationError extends CustomError {
-    constructor() {
-        super({ errorCode: 'AUTHENTICATION_ERROR', statusCode: 401, message: 'Invalid credentials' });
+    constructor(message?: string) {
+        super({ errorCode: 'AUTHENTICATION_ERROR', statusCode: 401, message: message || 'Invalid credentials' });
     }
 }
 
@@ -44,7 +45,7 @@ async function emailInUseCheck(email: string): Promise<boolean> {
  * Controllers *
  ***************/
 export const UserController: IUserController = {
-    create: async ({ name, email, password }: IUserCreateReq): Promise<IUserInfo> => {
+    create: async ({ name, email, password }: IUserCreateReq): Promise<IUserDetail> => {
         const emailInUseCheckResult: boolean = await emailInUseCheck(email);
         if (emailInUseCheckResult) throw new UserValidationError('Email already in use');
 
@@ -75,6 +76,24 @@ export const UserController: IUserController = {
             email: user[0].email,
             createdAt: user[0].createdAt,
             accessToken: token,
+        };
+    },
+
+    getUser: async ({ accessToken, userId }: IUserDetailReq): Promise<IUserDetail> => {
+        const verifyTokenResult = verifyToken(accessToken);
+        const currentTime = Date.now() / 1000;
+
+        if (!verifyTokenResult?.id || verifyTokenResult.id !== userId) throw new UserAuthenticationError();
+        if (!verifyTokenResult?.exp || verifyTokenResult.exp <= currentTime) throw new UserAuthenticationError('Token expired');
+
+        const user: IUser | null = await User.findById(userId);
+        if (!user) throw new UserNotFoundError();
+
+        return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            createdAt: user.createdAt,
         };
     },
 };

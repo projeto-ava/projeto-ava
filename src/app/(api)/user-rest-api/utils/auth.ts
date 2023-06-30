@@ -17,6 +17,6 @@ export const generateToken = (userId: string): string => {
   return jwt.sign({ id: userId }, process.env.JWS_SECRET_KEY!, { expiresIn: '1d' });
 }
 
-export const verifyToken = (token: string): string | jwt.JwtPayload => {
-  return jwt.verify(token, process.env.JWS_SECRET_KEY!);
+export const verifyToken = (token: string): jwt.JwtPayload => {
+  return jwt.verify(token, process.env.JWS_SECRET_KEY!) as jwt.JwtPayload;
 }
