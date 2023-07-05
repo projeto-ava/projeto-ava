@@ -38,7 +38,7 @@ export const InputText = ({
   }, [disabled])
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className={`flex flex-col gap-1 ${fullWidth ? 'w-full' : ''}`}>
       {label && (
         <label
           className={`text-xs ${
