@@ -62,7 +62,7 @@ export const InputText = ({
         <>
           {startIcon}
           <input
-            className="w-full outline-none bg-transparent text-gray-ctr-4 placeholder-gray-ctr-3"
+            className="w-full outline-none bg-transparent text-gray-ctr-4 placeholder-gray-ctr-3 text-base font-normal"
             type={type || 'text'}
             ref={ref}
             onFocus={() => setIsFocused(true)}
