@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-src/components/utils
+/src/components/RegressiveCountdown/regressiveCountdown.tsx
 
 # next.js
 /.next/
