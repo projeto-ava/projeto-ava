@@ -30,7 +30,6 @@ export interface IUserLoginRes extends IUserDetail {
 
 export interface IUserDetailReq {
   userId: string;
-  accessToken: string;
 }
 
 export interface IUserSchema {
@@ -38,6 +37,12 @@ export interface IUserSchema {
     email: string;
     password: string;
     createdAt: Date;
+}
+
+export interface IUserController {
+    create: ({ name, email, password }: IUserCreateReq) => Promise<IUserDetail>;
+    login: ({ email, password }: IUserLoginReq) => Promise<IUserLoginRes>;
+    getUser: ({ userId }: IUserDetailReq) => Promise<IUserDetail>;
 }
 
 interface IUserDB extends IUserSchema {

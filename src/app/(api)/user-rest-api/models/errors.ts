@@ -1,16 +1,19 @@
-export interface ICustomErrorDetail {
-    message: string;
-    errorCode: string;
-    statusCode: number;
+import { CustomError } from "../../models/errors";
+
+export class UserValidationError extends CustomError {
+    constructor(message: string) {
+        super({ errorCode: 'VALIDATION_ERROR', statusCode: 400, message });
+    }
 }
 
-export abstract class CustomError extends Error {
-    errorCode: string;
-    statusCode: number;
+export class UserAuthenticationError extends CustomError {
+    constructor(message?: string) {
+        super({ errorCode: 'AUTHENTICATION_ERROR', statusCode: 401, message: message || 'Invalid credentials' });
+    }
+}
 
-    constructor({ errorCode, statusCode, message }: ICustomErrorDetail) {
-        super(message);
-        this.errorCode = errorCode;
-        this.statusCode = statusCode;
+export class UserNotFoundError extends CustomError {
+    constructor() {
+        super({ errorCode: 'USER_NOT_FOUND_ERROR', statusCode: 404, message: 'User not found' });
     }
 }
