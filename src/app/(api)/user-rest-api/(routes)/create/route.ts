@@ -2,7 +2,9 @@ import { NextRequest } from 'next/server';
 
 import { IUserDetail } from '../../models/user';
 import dbConnection from '../../../services/db-connection';
-import { UserController, UserValidationError } from '../../controllers/user';
+import { UserController } from '../../controllers/user';
+import { UserValidationError } from '../../models/errors';
+import { errorResponse } from '@/app/(api)/helpers/error-response';
 
 dbConnection();
 
@@ -15,13 +17,6 @@ export async function POST(req: NextRequest) {
 
         return new Response(JSON.stringify(createdUser), { status: 201 });
     } catch (error: any) {
-        return new Response(
-            JSON.stringify({
-                success: false,
-                error: error && error?.message || 'Server error',
-                errorCode: error && error?.errorCode || 'ERROR',
-            }),
-            { status: error && error?.statusCode || 500 }
-        );
+        return errorResponse(error);
     }
 }
