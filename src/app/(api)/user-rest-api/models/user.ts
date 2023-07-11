@@ -33,6 +33,11 @@ export interface IUserDetailReq {
   accessToken: string;
 }
 
+export interface IUserUpdatePasswordReq {
+    email: string;
+    password: string;
+}
+
 export interface IUserSchema {
     name: string;
     email: string;

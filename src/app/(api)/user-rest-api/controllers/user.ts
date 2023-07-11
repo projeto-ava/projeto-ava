@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { CustomError } from '../models/errors';
-import { IUser, IUserCreateReq, IUserDetail, IUserDetailReq, IUserLoginReq, IUserLoginRes, User } from '../models/user';
+import { IUser, IUserCreateReq, IUserDetail, IUserDetailReq, IUserLoginReq, IUserLoginRes, IUserUpdatePasswordReq, User } from '../models/user';
 import { hashPassword, comparePassword, generateToken, verifyToken } from '../utils/auth';
 
 /**************
@@ -10,6 +10,7 @@ interface IUserController {
     create: ({ name, email, password }: IUserCreateReq) => Promise<IUserDetail>;
     login: ({ email, password }: IUserLoginReq) => Promise<IUserLoginRes>;
     getUser: ({ accessToken, userId }: IUserDetailReq) => Promise<IUserDetail>;
+    updatePassword:({email, password}: IUserUpdatePasswordReq) => Promise<null>;
 }
 
 /*****************
@@ -96,4 +97,11 @@ export const UserController: IUserController = {
             createdAt: user.createdAt,
         };
     },
+
+    updatePassword:async ({email, password}: IUserUpdatePasswordReq): Promise<null> => {
+      const passwordCrypt = await hashPassword(password);
+      await User.updateOne({ email }, { password:passwordCrypt });
+
+      return null  
+    }
 };
