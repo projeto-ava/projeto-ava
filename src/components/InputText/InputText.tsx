@@ -10,7 +10,7 @@ interface IInputTextProp {
   startIcon?: JSX.Element
   endIcon?: JSX.Element
   label?: string
-  helperText?: string
+  errorText?: string
   placeholder?: string
   type?: 'password' | 'text'
   className?: string
@@ -24,7 +24,7 @@ export const InputText = ({
   startIcon,
   endIcon,
   label,
-  helperText,
+  errorText,
   placeholder,
   type,
   className
@@ -75,7 +75,7 @@ export const InputText = ({
           {endIcon}
         </>
       </div>
-      {helperText && <p className="text-gray-ctr-3 text-xs ">{helperText}</p>}
+      {errorText && <p className="text-red-500 text-xs ">{errorText}</p>}
     </div>
   )
 }

@@ -100,7 +100,8 @@ export const UserController: IUserController = {
 
     updatePassword:async ({email, password}: IUserUpdatePasswordReq): Promise<null> => {
       const passwordCrypt = await hashPassword(password);
-      await User.updateOne({ email }, { password:passwordCrypt });
+      const updateOneResult = await User.updateOne({ email }, { password:passwordCrypt });
+    if (updateOneResult.modifiedCount === 0) throw new UserNotFoundError();
 
       return null  
     }
